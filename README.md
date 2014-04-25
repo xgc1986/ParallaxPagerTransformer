@@ -20,7 +20,6 @@ You only have to pass to the ParallaxTransformer the id of the element you want 
 			/** ... **/
 
 			mPager = (ViewPager) findViewById(R.id.pager);
-        	mPager.setBackgroundColor(0xFF000000);
 
         	// creating the parallaxTransformer, you only need to pass the id of the View (or ViewGroup) you want to do the parallax effect
         	mPager.setPageTransformer(false, new ParallaxTransformer(R.id.parallaxContent));
