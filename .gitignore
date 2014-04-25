@@ -35,3 +35,5 @@ local.properties
 *.ipr
 *~
 *.swp
+
+!parallaxDemo.apk
