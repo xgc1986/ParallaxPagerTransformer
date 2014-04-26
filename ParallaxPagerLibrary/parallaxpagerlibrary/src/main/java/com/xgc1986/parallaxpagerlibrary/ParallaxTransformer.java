@@ -16,27 +16,11 @@ public class ParallaxTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(View view, float position) {
 
-        ViewGroup root = (ViewGroup)((FrameLayout) view).getChildAt(0);
-        View parallaxView = root.findViewById(id);
+        View parallaxView = view.findViewById(id);
 
         if (position >= -1 && position <= 1) {
-            float wv = parallaxView.getWidth();
-            float hv = parallaxView.getHeight();
-
-            float wi = parallaxView.getWidth();
-            float hi = parallaxView.getHeight();
-
-            float width = wv;
-            float height = hv;
-
-            if (wi / wv > hi / hv) {
-                width = wi * hv / hi;
-            } else {
-                height= hi * wv / wi;
-            }
-
-            parallaxView.setTranslationX(-(position * width * 0.2f) + (wv - width) / 2);
-            parallaxView.setTranslationY((hv - height) / 2);
+            float width = parallaxView.getWidth();
+            parallaxView.setTranslationX(-(position * width * 0.2f));
         }
     }
 }
