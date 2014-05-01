@@ -4,6 +4,8 @@ A pager for Android with parallax effect
 
 ## Usage
 
+minSdkVersion 11
+
 You only have to pass to the ParallaxTransformer the id of the element you want have the parallax effect
 
 ```java

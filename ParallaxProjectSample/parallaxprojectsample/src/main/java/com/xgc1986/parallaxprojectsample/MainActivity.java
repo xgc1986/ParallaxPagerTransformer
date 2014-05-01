@@ -1,6 +1,5 @@
 package com.xgc1986.parallaxprojectsample;
 
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -22,11 +21,17 @@ public class MainActivity extends FragmentActivity {
 
         getActionBar().hide();
 
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setBackgroundColor(0xFF000000);
-        mPager.setPageTransformer(false, new ParallaxTransformer(R.id.parallaxContent));
+
+        ParallaxTransformer pt = new ParallaxTransformer((R.id.image));
+        pt.setBorder(20);
+        mPager.setPageTransformer(false, pt);
+
         mAdapter = new CatsAdapter(this, getSupportFragmentManager());
         mAdapter.setPager(mPager);
+
         Bundle bNina = new Bundle();
         bNina.putInt("image", R.drawable.nina);
         bNina.putString("name", "Nina");

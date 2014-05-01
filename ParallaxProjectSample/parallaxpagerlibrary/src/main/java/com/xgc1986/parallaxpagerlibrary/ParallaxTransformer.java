@@ -2,12 +2,11 @@ package com.xgc1986.parallaxpagerlibrary;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 public class ParallaxTransformer implements ViewPager.PageTransformer {
 
     private int id;
+    private int border = 0;
 
     public ParallaxTransformer(int id) {
         this.id = id;
@@ -18,9 +17,23 @@ public class ParallaxTransformer implements ViewPager.PageTransformer {
 
         View parallaxView = view.findViewById(id);
 
-        if (position >= -1 && position <= 1) {
-            float width = parallaxView.getWidth();
-            parallaxView.setTranslationX(-(position * width * 0.2f));
+        if (parallaxView != null) {
+            if (position > -1 && position < 1) {
+                float width = parallaxView.getWidth();
+                parallaxView.setTranslationX(-(position * width * 0.2f));
+                float sc = ((float)view.getWidth() - border)/ view.getWidth();
+                if (position == 0) {
+                    view.setScaleX(1);
+                    view.setScaleY(1);
+                } else {
+                    view.setScaleX(sc);
+                    view.setScaleY(sc);
+                }
+            }
         }
+    }
+
+    public void setBorder(int px) {
+        border = px;
     }
 }
