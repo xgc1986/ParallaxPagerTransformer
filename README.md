@@ -1,6 +1,23 @@
-# ParallaxPagerLibrary
+# ParallaxPagerTransformer
 
-A pager for Android with parallax effect
+A pager transformer for Android with parallax effect
+
+## Installation
+
+in your build.gradle file
+
+
+    repositories {
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        mavenCentral()
+    }
+
+    dependencies {
+        // ...
+        compile 'com.xgc1986.ParallaxBackgroundViewPager:library:0.1-SNAPSHOT'
+    }
+
+
 
 ## Usage
 
@@ -34,4 +51,4 @@ You only have to pass to the ParallaxTransformer the id of the element you want 
 
 ```
 
-And that's all, you can see in action <a href="https://www.youtube.com/watch?v=5zEOUWY9Hvo">Here</a>
+And that's all, you can see in action <a href="https://www.youtube.com/watch?v=5zEOUWY9Hvo" target="_blank">Here</a>
