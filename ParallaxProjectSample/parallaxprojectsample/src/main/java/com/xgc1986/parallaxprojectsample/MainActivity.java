@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
-import com.xgc1986.parallaxpagerlibrary.ParallaxTransformer;
+import com.xgc1986.parallaxPagerTransformer.ParallaxPagerTransformer;
 
 public class MainActivity extends FragmentActivity {
 
@@ -21,12 +21,12 @@ public class MainActivity extends FragmentActivity {
 
         getActionBar().hide();
 
-
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setBackgroundColor(0xFF000000);
 
-        ParallaxTransformer pt = new ParallaxTransformer((R.id.image));
+        ParallaxPagerTransformer pt = new ParallaxPagerTransformer((R.id.image));
         pt.setBorder(20);
+        //pt.setSpeed(0.2f);
         mPager.setPageTransformer(false, pt);
 
         mAdapter = new CatsAdapter(this, getSupportFragmentManager());

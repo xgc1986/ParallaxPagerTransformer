@@ -1,14 +1,15 @@
-package com.xgc1986.parallaxpagerlibrary;
+package com.xgc1986.parallaxPagerTransformer;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-public class ParallaxTransformer implements ViewPager.PageTransformer {
+public class ParallaxPagerTransformer implements ViewPager.PageTransformer {
 
     private int id;
     private int border = 0;
+    private float speed = 0.2f;
 
-    public ParallaxTransformer(int id) {
+    public ParallaxPagerTransformer(int id) {
         this.id = id;
     }
 
@@ -20,7 +21,7 @@ public class ParallaxTransformer implements ViewPager.PageTransformer {
         if (parallaxView != null) {
             if (position > -1 && position < 1) {
                 float width = parallaxView.getWidth();
-                parallaxView.setTranslationX(-(position * width * 0.2f));
+                parallaxView.setTranslationX(-(position * width * speed));
                 float sc = ((float)view.getWidth() - border)/ view.getWidth();
                 if (position == 0) {
                     view.setScaleX(1);
@@ -36,4 +37,10 @@ public class ParallaxTransformer implements ViewPager.PageTransformer {
     public void setBorder(int px) {
         border = px;
     }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+
+
 }

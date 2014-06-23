@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ParallaxView</string>
+    <string name="cat_content_description">Image of a cat</string>
+    <string name="plus">+</string>
+    <string name="github_account">https://github.com/xgc1986</string>
 </resources>

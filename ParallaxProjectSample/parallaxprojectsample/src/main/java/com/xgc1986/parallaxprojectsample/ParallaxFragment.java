@@ -1,7 +1,9 @@
 package com.xgc1986.parallaxprojectsample;
 
+import android.content.Intent;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -63,6 +65,13 @@ public class ParallaxFragment extends Fragment {
 
         TextView blog = (TextView) v.findViewById(R.id.blog);
         blog.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/news-regular.ttf"));
+        blog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.github_account)));
+                startActivity(browserIntent);
+            }
+        });
 
         TextView more = (TextView)v.findViewById(R.id.more);
 

@@ -17,14 +17,13 @@
             android:id="@+id/image"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:contentDescription="Image of a cat"
+            android:contentDescription="@string/cat_content_description"
             android:src="@drawable/kero" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Kero"
             android:textColor="#FFFFFFFF"
             android:textStyle="bold"
             android:textSize="72sp"
@@ -38,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFFFF"
-        android:text="+"
+        android:text="@string/plus"
         android:textSize="72sp"
         android:id="@+id/more"
         android:layout_alignParentTop="true"
@@ -50,7 +49,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FFFFFFFF"
-        android:text="xgc1986"
+        android:text="@string/github_account"
         android:id ="@+id/blog"
         android:paddingBottom="10dp"
         android:layout_alignParentBottom="true"
