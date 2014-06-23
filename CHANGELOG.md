@@ -3,7 +3,7 @@ Change Log
 
 *(2013-07-23)*
 --------------
- * [Issue #1]Change project title to ParallaxPagerTransformer (as suggested by <a href="https://github.com/tasomaniac" target="_blank">tasomaniac</a>
+ * [Issue #1]Change project title to ParallaxPagerTransformer (as suggested by <a href="https://github.com/tasomaniac" target="_blank">tasomaniac</a>)
  * Exported to sonatype.org
  * Delete some resources from SampleParallaxProjectSample
  * SampleParallaxProjectSample is importing the library from sonatype
