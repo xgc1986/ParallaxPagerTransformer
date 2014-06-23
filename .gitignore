@@ -1,41 +1,36 @@
-#built application files
-*.apk
-*.ap_
+#Android generated
+bin
+gen
+gen*
 
-# files for the dex VM
-*.dex
+#Eclipse
+.project
+.classpath
+.settings
 
-# Java class files
-*.class
+#IntelliJ IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+out
 
-# generated files
+#Maven
+target
+release.properties
+pom.xml.*
 
-bin/
-gen/
-
-# Local configuration file (sdk path, etc)
+#Ant
+build.xml
 local.properties
+proguard.cfg
 
-# Windows thumbnail db
+#Gradle
+.gradle
+build
+
+#OSX
 .DS_Store
 
-# Eclipse project files
-.classpath
-.project
-
-# Android Studio
-.idea
-#.idea/workspace.xml - uncomment this and comment/delete .idea if it better suit your needs
-.gradle
-/*/local.properties
-/*/out
-/*/build
-/*/*/build
-/*/*/production
-*.iml
-*.iws
-*.ipr
-*~
-*.swp
 
 !parallaxDemo.apk
