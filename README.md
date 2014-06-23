@@ -51,4 +51,3 @@ You only have to pass to the ParallaxTransformer the id of the element you want 
 
 And that's all, you can see in action <a href="https://www.youtube.com/watch?v=5zEOUWY9Hvo" target="_blank">Here</a>
 
-<img src="http://u.cubeupload.com/saeidq8/ParallaxPagerLibrary.gif">
