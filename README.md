@@ -13,7 +13,7 @@ in your build.gradle file
 
     dependencies {
         // ...
-        compile 'com.xgc1986.ParallaxPagerTransformer:library:0.2-SNAPSHOT'
+        compile 'com.xgc1986.ParallaxPagerTransformer:library:0.2-SNAPSHOT@aar'
     }
 
 ## Usage
