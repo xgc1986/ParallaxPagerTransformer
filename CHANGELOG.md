@@ -1,11 +1,11 @@
-Change Log
+# Change Log
 =====
 
-* ##### *(2014-07-27)* 
+### *(2014-07-27)* 
 --------------
  * [Issue #2] Update <a href="https://github.com/xgc1986/ParallaxPagerTransformer/blob/master/README.md" target="_blank">README.md</a> to avoid problem in gradle 0.8.+ ("Error:Module version com.xgc1986.ParallaxPagerTransformer:library:0.2-SNAPSHOT depends on libraries but is not a library itself")
 
-(0.2-SNAPSHOT) *(2014-06-23)* 
+### (0.2-SNAPSHOT) *(2014-06-23)* 
 --------------
  * Replace package parallaxpagerlibrary to parallaxpagertransformer
  * Added method setSpeed(float) (default = 0.2f). This change the speed of the effect during the transition between two pages
@@ -13,7 +13,7 @@ Change Log
  * Updated sample
 
 
-(0.1-SNAPSHOT) *(2014-06-23)* 
+### (0.1-SNAPSHOT) *(2014-06-23)* 
 --------------
  * [Issue #1] Change project title to ParallaxPagerTransformer (as suggested by <a href="https://github.com/tasomaniac" target="_blank">tasomaniac</a>)
  * Exported to sonatype.org
@@ -22,7 +22,8 @@ Change Log
  * Fix some layout issue from SampleParallaxProjectSample
 
 
-* ##### *(2014-06-28)*
+### *(2014-06-28)*
+--------------
  * Add `void setBorder(int px)`. Sets a current border while de transition between twopages, the border's with is `px`.
 
 ```java
