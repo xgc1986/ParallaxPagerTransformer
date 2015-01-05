@@ -1,3 +1,5 @@
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ParallaxPagerTransformer-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1312)
+
 # ParallaxPagerTransformer
 
 A pager transformer for Android with parallax effect
@@ -51,3 +53,4 @@ You only have to pass to the ParallaxTransformer the id of the element you want 
 
 And that's all, you can see in action <a href="https://www.youtube.com/watch?v=5zEOUWY9Hvo" target="_blank">Here</a>
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ParallaxPagerTransformer-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1312)
