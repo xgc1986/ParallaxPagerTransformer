@@ -1,5 +1,6 @@
 package com.xgc1986.parallaxprojectsample;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -19,7 +20,11 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        getActionBar().hide();
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setBackgroundColor(0xFF000000);
@@ -30,7 +35,7 @@ public class MainActivity extends FragmentActivity {
         mPager.setPageTransformer(false, pt);
 
         mAdapter = new CatsAdapter(this, getSupportFragmentManager());
-        mAdapter.setPager(mPager);
+        mAdapter.setPager(mPager); //only for this transformer
 
         Bundle bNina = new Bundle();
         bNina.putInt("image", R.drawable.nina);
