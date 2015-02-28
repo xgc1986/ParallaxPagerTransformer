@@ -3,13 +3,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // This is the library version used when deploying the artifact
-version = "1.0.0"
+version = "1.0.1"
 
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
     defaultConfig {
-        //applicationId "com.xgc1986.parallaxPagerTransformer"
         minSdkVersion 11
         targetSdkVersion 21
         versionCode 1
@@ -17,13 +16,53 @@ android {
     }
     buildTypes {
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 def siteUrl = 'https://github.com/xgc1986/ParallaxPagerTransformer'      // Homepage URL of the library
 def gitUrl = 'https://github.com/xgc1986/ParallaxPagerTransformer.git'   // Git repository URL
-group = "com.xgc1986.parallaxPagerTransformer"                                        // Maven Group ID for the artifact
+group = "com.xgc1986.android"                                        // Maven Group ID for the artifact
 
-/*install {
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = true //If version should be auto published after an upload
+    pkg {
+        repo = 'maven'
+        name = 'ParallaxPagerLibrary'
+        desc = 'a Parallax Pager Library'
+        websiteUrl = siteUrl
+        issueTrackerUrl = 'https://github.com/xgc1986/ParallaxPagerTransformer/issues'
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
+        labels = ['android', 'parallax', 'pager']
+        publicDownloadNumbers = true
+
+        pkg {
+            repo = "maven"
+            name = "ParallaxPagerLibrary"
+            websiteUrl = siteUrl
+            vcsUrl = gitUrl
+            licenses = ["Apache-2.0"]
+            publish = true
+        }
+    }
+
+}
+
+
+install {
     repositories.mavenInstaller {
         // This generates POM.xml with proper parameters
         pom {
@@ -31,7 +70,7 @@ group = "com.xgc1986.parallaxPagerTransformer"                                  
                 packaging 'aar'
 
                 // Add your description here
-                name 'Parralax effect for android'
+                name 'Parallax Pager'
                 url siteUrl
 
                 // Set your license
@@ -57,10 +96,9 @@ group = "com.xgc1986.parallaxPagerTransformer"                                  
             }
         }
     }
-}*/
+}
 
-
-/*task sourcesJar(type: Jar) {
+task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
@@ -78,70 +116,6 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
-*/
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-
-/*bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = "Parallax Pager Library"
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
-}*/
-
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    //configurations = ['deployables'] //When uploading configuration files
-    // - OR -
-    //publications = ['mavenStuff'] //When uploading Maven-based publication files
-    // - AND/OR -
-    filesSpec { //When uploading any arbitrary files ('filesSpec' is a standard Gradle CopySpec)
-        from 'arbitrary-files'
-        into 'standalone_files/level1'
-        rename '(.+)\\.(.+)', '$1-suffix.$2'
-    }
-    dryRun = false //Whether to run this as dry-run, without deploying
-    publish = true //If version should be auto published after an upload
-    pkg {
-        repo = 'maven'
-        //userOrg = 'myorg' //An optional organization name when the repo belongs to one of the user's orgs
-        name = 'ParallaxPagerLibrary'
-        desc = 'a Parallax Pager Library'
-        websiteUrl = siteUrl
-        issueTrackerUrl = 'https://github.com/bintray/gradle-bintray-plugin/issues'
-        vcsUrl = gitUrl
-        licenses = ['Apache-2.0']
-        labels = ['android', 'parallax', 'pager']
-        publicDownloadNumbers = true
-        //attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee'] //Optional package-level attributes
-        //Optional version descriptor
-        version {
-            name = '1.0.1-Final' //Bintray logical version name
-            desc = ''
-            vcsTag = '1.3.0'
-            //attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-            //Optional version-level attributes
-        }
-    }
-
-}
-
-
-
-
-
-
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

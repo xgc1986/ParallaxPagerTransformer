@@ -10,7 +10,7 @@ in your build.gradle file
 
     dependencies {
         // ...
-        compile 'com.xgc1986.parallaxPagerTransformer:library:1.0.0:sources'
+        compile 'com.xgc1986.android:parallaxpagertransformer:1.0.0'
     }
 
 ## Usage
