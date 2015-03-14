@@ -1,5 +1,12 @@
 # Change Log
 
+### *(2015-03-14)*
+ * change minSdkVersion to 10, but it won't have the parallax effect on such version
+ * Reorganize the android project
+ * Moved images from drawables to mipmaps.
+
+--------------
+
 ### *(2015-02-25)*
  * [Issue #3] moved to jcenter repository.
  * fixed a bug on the sample version due to a change on android 5
