@@ -1,5 +1,14 @@
 # Change Log
 
+### *(2016-04-02)*
+ * change minSdkVersion to 16
+ * change targetSdkVersion to 23
+ * Fix [Issue #4] Add OSS license type in README.
+ * Fix [Issue #5] NullPointer Exception.
+ * Fix [Issue #6] android:allowBackup conflict.
+
+--------------
+
 ### *(2015-03-14)*
  * change minSdkVersion to 10, but it won't have the parallax effect on such version
  * Reorganize the android project
@@ -8,14 +17,14 @@
 --------------
 
 ### *(2015-02-25)*
- * [Issue #3] moved to jcenter repository.
+ * Fix [Issue #3] moved to jcenter repository.
  * fixed a bug on the sample version due to a change on android 5
  * update the sample version to use jcenter repository
 
 --------------
 
 ### *(2014-07-27)*
- * [Issue #2] Update <a href="https://github.com/xgc1986/ParallaxPagerTransformer/blob/master/README.md" target="_blank">README.md</a> to avoid problem in gradle 0.8.+ ("Error:Module version com.xgc1986.ParallaxPagerTransformer:library:0.2-SNAPSHOT depends on libraries but is not a library itself")
+ * Fix [Issue #2] Update <a href="https://github.com/xgc1986/ParallaxPagerTransformer/blob/master/README.md" target="_blank">README.md</a> to avoid problem in gradle 0.8.+ ("Error:Module version com.xgc1986.ParallaxPagerTransformer:library:0.2-SNAPSHOT depends on libraries but is not a library itself")
 
 --------------
 

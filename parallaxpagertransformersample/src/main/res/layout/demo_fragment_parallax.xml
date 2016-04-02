@@ -17,8 +17,7 @@
             android:id="@+id/image"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:contentDescription="@string/demo_parallax_description"
-            android:src="@mipmap/bg_kero" />
+            android:contentDescription="@string/demo_parallax_description" />
 
         <TextView
             android:layout_width="wrap_content"
