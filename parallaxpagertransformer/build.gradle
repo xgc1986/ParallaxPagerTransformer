@@ -1,0 +1,135 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+def _siteUrl = 'https://github.com/xgc1986/ParallaxPagerTransformer'      // Homepage URL of the library
+def _gitUrl = 'https://github.com/xgc1986/ParallaxPagerTransformer.git'
+def _issueUrl = 'https://github.com/xgc1986/ParallaxPagerTransformer/issues'
+
+def _name = 'ParallaxPagerLibrary'
+def _name2 = 'Parallax Pager'
+def _description = 'a Parallax Pager Library'
+def _labels = ['android', 'parallax', 'pager']
+def _version = "1.0.4"
+
+group = "com.xgc1986.android"                                            // Maven Group ID for the artifact
+version _version
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName _version
+    }
+    buildTypes {
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = true //If version should be auto published after an upload
+    pkg {
+        repo = 'maven'
+        name = _name
+        desc = _description
+        websiteUrl = _siteUrl
+        issueTrackerUrl = _issueUrl
+        vcsUrl = _gitUrl
+        licenses = ['Apache-2.0']
+        labels = _labels
+        publicDownloadNumbers = true
+
+        pkg {
+            repo = "maven"
+            name = _name
+            websiteUrl = _siteUrl
+            vcsUrl = _gitUrl
+            licenses = ["Apache-2.0"]
+            publish = true
+        }
+    }
+
+}
+
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+
+                // Add your description here
+                name _name2
+                url _siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'xgc1986'
+                        name 'Javier Gonzalez Cuadrado'
+                        email 'xgc1986@gmail.com'
+                    }
+                }
+                scm {
+                    connection _gitUrl
+                    developerConnection _gitUrl
+                    url _siteUrl
+
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.2.1'
+}
+
+
+
+
+
+
