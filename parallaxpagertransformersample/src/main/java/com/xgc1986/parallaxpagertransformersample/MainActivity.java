@@ -23,9 +23,10 @@ public class MainActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setBackgroundColor(0xFF000000);
 
-        ParallaxPagerTransformer pt = new ParallaxPagerTransformer((R.id.image));
-        pt.setBorder(20);
-        //pt.setSpeed(0.2f);
+        ParallaxPagerTransformer pt = new ParallaxPagerTransformer.Builder()
+                .addItem(R.id.name, 2.7f)
+                .addItem(R.id.more,2.5f)
+                .build();
         mPager.setPageTransformer(false, pt);
 
         mAdapter = new DemoParallaxAdapter(getSupportFragmentManager());

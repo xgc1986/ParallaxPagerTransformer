@@ -1,52 +1,88 @@
 package com.xgc1986.parallaxPagerTransformer;
 
-import android.annotation.TargetApi;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParallaxPagerTransformer implements ViewPager.PageTransformer {
+    private int mBorder;
+    private List<ParallaxItem> mItems;
 
-    private int id;
-    private int border = 0;
-    private float speed = 0.2f;
-
-    public ParallaxPagerTransformer(int id) {
-        this.id = id;
+    public ParallaxPagerTransformer(List<ParallaxItem> items) {
+        mItems = items;
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void transformPage(View view, float position) {
+        for (ParallaxItem item : mItems) {
+            parallax(item, view, position);
+        }
+    }
 
-        View parallaxView = view.findViewById(id);
+    private void parallax(ParallaxItem item, View view, float position) {
+        View parallaxView = view.findViewById(item.getId());
 
-        if (view == null ) {
-            Log.w("ParallaxPager", "There is no view");
+        if (parallaxView == null) {
+            return;
         }
 
-        if (parallaxView != null && Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB ) {
-            if (position > -1 && position < 1) {
-                float width = parallaxView.getWidth();
-                parallaxView.setTranslationX(-(position * width * speed));
-                float sc = ((float)view.getWidth() - border)/ view.getWidth();
-                if (position == 0) {
-                    view.setScaleX(1);
-                    view.setScaleY(1);
-                } else {
-                    view.setScaleX(sc);
-                    view.setScaleY(sc);
+        if (position > -1 && position < 1) {
+            float width = parallaxView.getWidth();
+            float speed = item.getSpeed();
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                if (view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+                    speed = speed * -1;
                 }
+            }
+
+            parallaxView.setTranslationX(-(position * width * speed));
+            float sc = ((float) view.getWidth() - mBorder) / view.getWidth();
+            if (position == 0) {
+                view.setScaleX(1);
+                view.setScaleY(1);
+            } else {
+                view.setScaleX(sc);
+                view.setScaleY(sc);
             }
         }
     }
 
-    public void setBorder(int px) {
-        border = px;
+    public void setBorder(int border) {
+        mBorder = border;
     }
 
-    public void setSpeed(float speed) {
-        this.speed = speed;
+    public static class Builder {
+        private int border;
+        List<ParallaxItem> items;
+
+        public Builder() {
+            items = new ArrayList<>();
+        }
+
+        public Builder addItem(ParallaxItem item) {
+            items.add(item);
+            return this;
+        }
+
+        public Builder addItem(@IdRes int id, float speed) {
+            items.add(new ParallaxItem(id, speed));
+            return this;
+        }
+
+        public Builder border(int border) {
+            this.border = border;
+            return this;
+        }
+
+        public ParallaxPagerTransformer build() {
+            ParallaxPagerTransformer pt = new ParallaxPagerTransformer(items);
+            pt.setBorder(border);
+            return pt;
+        }
     }
 }

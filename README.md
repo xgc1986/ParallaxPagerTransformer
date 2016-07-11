@@ -17,7 +17,7 @@ in your build.gradle file
 
 minSdkVersion 11
 
-You only have to pass to the ParallaxTransformer the id of the element you want have the parallax effect
+You only have to pass to the ParallaxTransformer the id of the elements you want have the parallax effect
 
 ```java
 
@@ -34,9 +34,13 @@ You only have to pass to the ParallaxTransformer the id of the element you want 
 
 			mPager = (ViewPager) findViewById(R.id.pager);
 
-        	// creating the parallaxTransformer, you only need to pass the id of the View (or ViewGroup) you want to do the parallax effect
+        	// creating the parallaxTransformer, you only need to pass the id of the Views (or ViewGroup) you want to do the parallax effect
 
-        	mPager.setPageTransformer(false, new ParallaxPagerTransformer(R.id.parallaxContent));
+        	ParallaxPagerTransformer pt = new ParallaxPagerTransformer.Builder()
+                            .addItem(R.id.name, 0.7f)
+                            .addItem(R.id.more,0.3f)
+                            .build();
+            mPager.setPageTransformer(false, pt);
         	mAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager());
         	mAdapter.setPager(mPager);
 
